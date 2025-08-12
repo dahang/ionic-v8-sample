@@ -1,0 +1,149 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Account</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onSubmit()" [disabled]="!accountForm.valid">
+        <ion-icon slot="icon-only" name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Add Account</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Account Information</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <ion-list>
+          <app-custom-input
+            formControlName="accountName"
+            label="Account Name"
+            placeholder="Enter account name"
+            [required]="true"
+            [maxlength]="50"
+            [errorText]="getErrorMessage('accountName')"
+            helperText="This will be used to identify the account"
+          ></app-custom-input>
+
+          <app-custom-input
+            formControlName="accountNumber"
+            label="Account Number"
+            placeholder="Enter account number"
+            [required]="true"
+            [maxlength]="20"
+            [errorText]="getErrorMessage('accountNumber')"
+            helperText="Unique identifier for this account"
+          ></app-custom-input>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Contact Information</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <ion-list>
+          <app-custom-input
+            formControlName="fullName"
+            label="Full Name"
+            placeholder="Enter full name"
+            [required]="true"
+            [maxlength]="100"
+            [errorText]="getErrorMessage('fullName')"
+            autocomplete="name"
+          ></app-custom-input>
+
+          <app-custom-input
+            formControlName="email"
+            label="Email Address"
+            placeholder="Enter email address"
+            type="email"
+            inputmode="email"
+            [required]="true"
+            [maxlength]="100"
+            [errorText]="getErrorMessage('email')"
+            autocomplete="email"
+          ></app-custom-input>
+
+          <app-custom-input
+            formControlName="phone"
+            label="Phone Number"
+            placeholder="Enter phone number"
+            type="tel"
+            inputmode="tel"
+            [required]="true"
+            [maxlength]="20"
+            [errorText]="getErrorMessage('phone')"
+            helperText="Include country code if applicable"
+            autocomplete="tel"
+          ></app-custom-input>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Additional Information</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <ion-list>
+          <app-custom-input
+            formControlName="company"
+            label="Company"
+            placeholder="Enter company name (optional)"
+            [required]="false"
+            [maxlength]="100"
+            [errorText]="getErrorMessage('company')"
+            autocomplete="organization"
+          ></app-custom-input>
+
+          <app-custom-input
+            formControlName="address"
+            label="Address"
+            placeholder="Enter address (optional)"
+            [required]="false"
+            [maxlength]="200"
+            [errorText]="getErrorMessage('address')"
+            autocomplete="street-address"
+          ></app-custom-input>
+
+          <app-custom-input
+            formControlName="notes"
+            label="Notes"
+            placeholder="Add any additional notes (optional)"
+            [required]="false"
+            [maxlength]="500"
+            [errorText]="getErrorMessage('notes')"
+            helperText="Any additional information about this account"
+          ></app-custom-input>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="form-actions">
+      <ion-button expand="block" type="submit" [disabled]="!accountForm.valid">
+        <ion-icon slot="start" name="save-outline"></ion-icon>
+        Save Account
+      </ion-button>
+      
+      <ion-button expand="block" fill="clear" (click)="onCancel()">
+        Cancel
+      </ion-button>
+    </div>
+  </form>
+</ion-content>
