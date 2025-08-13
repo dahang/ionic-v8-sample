@@ -1,0 +1,29 @@
+.required-indicator {
+  color: var(--ion-color-danger);
+  margin-left: 4px;
+}
+
+.character-count {
+  font-size: 0.8rem;
+  
+  &.warning {
+    color: var(--ion-color-warning);
+  }
+  
+  &.danger {
+    color: var(--ion-color-danger);
+  }
+}
+
+ion-item {
+  --padding-start: 0;
+  --padding-end: 0;
+  
+  &.ion-invalid {
+    --highlight-color: var(--ion-color-danger);
+  }
+  
+  &.ion-valid {
+    --highlight-color: var(--ion-color-success);
+  }
+}

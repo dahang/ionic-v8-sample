@@ -122,15 +122,29 @@
             autocomplete="street-address"
           ></app-custom-input>
 
-          <app-custom-input
+          <app-custom-textarea
+            formControlName="description"
+            label="Account Description"
+            placeholder="Describe this account (optional)"
+            [required]="false"
+            [maxlength]="500"
+            [rows]="4"
+            [autoGrow]="true"
+            [errorText]="getErrorMessage('description')"
+            helperText="Detailed description of this account's purpose or background"
+          ></app-custom-textarea>
+
+          <app-custom-textarea
             formControlName="notes"
             label="Notes"
             placeholder="Add any additional notes (optional)"
             [required]="false"
-            [maxlength]="500"
+            [maxlength]="300"
+            [rows]="3"
+            [autoGrow]="true"
             [errorText]="getErrorMessage('notes')"
             helperText="Any additional information about this account"
-          ></app-custom-input>
+          ></app-custom-textarea>
         </ion-list>
       </ion-card-content>
     </ion-card>

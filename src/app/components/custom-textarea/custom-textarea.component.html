@@ -7,20 +7,19 @@
       }
     </ion-label>
   }
-  <ion-input
-    [type]="type"
+  <ion-textarea
     [placeholder]="placeholder"
     [maxlength]="maxlength"
+    [rows]="rows"
+    [autoGrow]="autoGrow"
     [disabled]="disabled"
     [value]="value"
-    [inputmode]="inputmode"
-    [autocomplete]="autocomplete"
     [name]="name"
     (ionInput)="handleInputChange($event)"
     (ionChange)="handleInputChange($event)"
     (ionBlur)="handleBlur($event)"
     (ionFocus)="handleFocus($event)"
-  ></ion-input>
+  ></ion-textarea>
   @if (helperText && !errorText) {
     <ion-note slot="helper">
       {{ helperText }}
@@ -32,7 +31,7 @@
     </ion-note>
   }
   @if (showCharacterCount) {
-    <ion-note slot="end" class="character-count" [class.warning]="charactersRemaining <= 10" [class.danger]="charactersRemaining <= 5">
+    <ion-note slot="end" class="character-count" [class.warning]="charactersRemaining <= 50" [class.danger]="charactersRemaining <= 10">
       {{ charactersRemaining }} remaining
     </ion-note>
   }

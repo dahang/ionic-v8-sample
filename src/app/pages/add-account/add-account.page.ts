@@ -20,6 +20,7 @@ import {
   LoadingController
 } from '@ionic/angular/standalone';
 import { CustomInputComponent } from '../../components/custom-input/custom-input.component';
+import { CustomTextareaComponent } from '../../components/custom-textarea/custom-textarea.component';
 import { addIcons } from 'ionicons';
 import { saveOutline, personOutline, mailOutline, callOutline, businessOutline, cardOutline } from 'ionicons/icons';
 
@@ -44,7 +45,8 @@ import { saveOutline, personOutline, mailOutline, callOutline, businessOutline, 
     IonCardContent,
     IonList,
     IonIcon,
-    CustomInputComponent
+    CustomInputComponent,
+    CustomTextareaComponent
   ]
 })
 export class AddAccountPage implements OnInit {
@@ -72,7 +74,8 @@ export class AddAccountPage implements OnInit {
       phone: ['', [Validators.required, Validators.pattern('^[0-9+\\-\\s()]*$'), Validators.maxLength(20)]],
       company: ['', [Validators.maxLength(100)]],
       address: ['', [Validators.maxLength(200)]],
-      notes: ['', [Validators.maxLength(500)]]
+      description: ['', [Validators.maxLength(500)]],
+      notes: ['', [Validators.maxLength(300)]]
     });
   }
 
@@ -103,6 +106,7 @@ export class AddAccountPage implements OnInit {
       phone: 'Phone',
       company: 'Company',
       address: 'Address',
+      description: 'Account Description',
       notes: 'Notes'
     };
     return labels[fieldName] || fieldName;
